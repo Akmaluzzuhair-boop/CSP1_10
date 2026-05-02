@@ -7,6 +7,7 @@ void vigenereDecrypt(char *ciphertext, char *key) {
     int msgLen = strlen(ciphertext);
     int keyLen = strlen(key);
     char ch;
+
     for (i = 0, j = 0; i < msgLen; i++) {
         ch = ciphertext[i];
         if (isalpha(ch)) {
@@ -14,17 +15,16 @@ void vigenereDecrypt(char *ciphertext, char *key) {
             int k = tolower(key[j % keyLen]) - 'a';
             int p = (ch - offset - k + 26) % 26;
             ciphertext[i] = p + offset;
-
             j++;
         }
     }
 }
 
 int main() {
-   	char message[] = "rey txs qb xztwxgnvotB rciS";
-	char *key = "tempkey";
+    char ciphertext[] = "Asiy Nmezpam, Ytce Wozx!";
+    char *key = "tempkey";
 
-    printf("Encypted Text : %s\n", ciphertext);
+    printf("Encrypted Text : %s\n", ciphertext);
     vigenereDecrypt(ciphertext, key);
     printf("Deciphered : %s\n", ciphertext);
 
